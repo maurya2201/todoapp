@@ -1,6 +1,6 @@
 const getData = async () => {
   try {
-    const response = await axios.get(`https://todoback-92f1.onrender.com/api/todo/`);
+    const response = await axios.get(`https://todobackend-0yxk.onrender.com/api/todo/`);
     let value = ``;
     response.data.map((element) => {
       value += `
@@ -32,7 +32,7 @@ const addData = () => {
         const value = {
           message: todo,
         };
-        await axios.post(`https://todoback-92f1.onrender.com/api/todo/`, value);
+        await axios.post(`https://todobackend-0yxk.onrender.com/api/todo/`, value);
         getData();
         alert(`Todo-added successfully`);
         document.getElementById("todo").value = "";
@@ -46,7 +46,7 @@ addData();
 
 async function deleteTodo(id) {
   try {
-    await axios.delete(`https://todoback-92f1.onrender.com/api/todo/${id}`);
+    await axios.delete(`https://todobackend-0yxk.onrender.com/api/todo/${id}`);
     getData();
     alert(`Todo-deleted successfully`);
   } catch (error) {
@@ -56,7 +56,7 @@ async function deleteTodo(id) {
 
 async function updateTodo(id) {
   try {
-    const response = await axios.get(`https://todoback-92f1.onrender.com/api/todo/${id}`);
+    const response = await axios.get(`https://todobackend-0yxk.onrender.com/api/todo/${id}`);
     const update = document.getElementById("todo");
     update.value = response.data.message;
     document.getElementById("addtodo").style.display = "none";
@@ -69,7 +69,7 @@ async function updateTodo(id) {
       const value = {
         message: todo,
       };
-      await axios.put(`https://todoback-92f1.onrender.com/api/todo/${id}`, value);
+      await axios.put(`https://todobackend-0yxk.onrender.com/api/todo/${id}`, value);
       document.getElementById("addtodo").style.display = "block";
       updateBtn.style.display = "none";
       getData();
