@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://todoapp-mauryasoni.vercel.app/sitemap.xml
