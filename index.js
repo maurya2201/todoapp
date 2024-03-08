@@ -126,7 +126,7 @@ async function updateTodo(id,index) {
       const value = {
         message: todo,
       };
-      await axios.put(`http://localhost:4000/api/todo/${id}`, value);
+      await axios.put(`https://todobackend-0yxk.onrender.com/api/todo/${id}`, value);
       document.getElementById("addtodo").style.display = "block";
       updateBtn.style.display = "none";
       document.getElementsByClassName("btn btn-danger")[index].style.display="block";
