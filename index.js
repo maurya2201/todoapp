@@ -14,25 +14,7 @@ const getData = async () => {
     `;
     });
     document.getElementById("todobody").innerHTML = value;
-    setTimeout(()=>{
-      Toastify({
-        text: "Todo fetched successfully.",
-        className: "info",
-        style: {
-          background: "linear-gradient(to right, #00b09b, #96c93d)",
-        }
-      }).showToast();
-    },3000);
   } catch (error) {
-    setTimeout(()=>{
-    Toastify({
-      text: "Error while fetching Todo.",
-      className: "info",
-      style: {
-        background: "linear-gradient(to right, #ff0000, #ff0000)",
-      }
-    }).showToast();
-  },3000);
     console.log(error);
   }
 };
@@ -52,7 +34,7 @@ const addData = () => {
             background: "linear-gradient(to right, #ff0000, #ff0000)",
           }
         }).showToast();
-      } else {
+      }else{
         const value = {
           message: todo,
         };
@@ -69,13 +51,6 @@ const addData = () => {
       }
     });
   } catch (error) {
-    Toastify({
-      text: "Todo not added.",
-      className: "info",
-      style: {
-        background: "linear-gradient(to right, #ff0000, #ff0000)",
-      }
-    }).showToast();
     console.log(error);
   }
 };
@@ -93,13 +68,6 @@ async function deleteTodo(id) {
     }).showToast();
     getData();
   } catch (error) {
-    Toastify({
-      text: "Todo not deleted.",
-      className: "info",
-      style: {
-        background: "linear-gradient(to right, #ff0000, #ff0000)",
-      }
-    }).showToast();
     console.log(error);
   }
 }
@@ -130,6 +98,7 @@ async function updateTodo(id,index) {
       document.getElementById("addtodo").style.display = "block";
       updateBtn.style.display = "none";
       document.getElementsByClassName("btn btn-danger")[index].style.display="block";
+      getData();
       document.getElementById("todo").value = "";
       Toastify({
         text: "Todo updated successfully.",
@@ -139,14 +108,7 @@ async function updateTodo(id,index) {
         }
       }).showToast();
     });
-    getData();
   } catch (error) {
-    Toastify({
-      text: "Todo not updated.",
-      className: "info",
-      style: {
-        background: "linear-gradient(to right, #ff0000, #ff0000)",
-      }
-    }).showToast();
     console.log(error);
-}}
+}
+}
