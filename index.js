@@ -130,7 +130,6 @@ async function updateTodo(id,index) {
       document.getElementById("addtodo").style.display = "block";
       updateBtn.style.display = "none";
       document.getElementsByClassName("btn btn-danger")[index].style.display="block";
-      getData();
       document.getElementById("todo").value = "";
       Toastify({
         text: "Todo updated successfully.",
@@ -140,6 +139,7 @@ async function updateTodo(id,index) {
         }
       }).showToast();
     });
+    getData();
   } catch (error) {
     Toastify({
       text: "Todo not updated.",
