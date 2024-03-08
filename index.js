@@ -1,6 +1,6 @@
 const getData = async () => {
   try {
-    const response = await axios.get(`http://localhost:4000/api/todo/`);
+    const response = await axios.get(`https://todobackend-0yxk.onrender.com/api/todo/`);
     let value = ``;
     response.data.map((element,index) => {
       value += `
@@ -56,7 +56,7 @@ const addData = () => {
         const value = {
           message: todo,
         };
-        await axios.post(`http://localhost:4000/api/todo/`, value);
+        await axios.post(`https://todobackend-0yxk.onrender.com/api/todo/`, value);
         Toastify({
           text: "Todo added successfully.",
           className: "info",
@@ -83,7 +83,7 @@ addData();
 
 async function deleteTodo(id) {
   try {
-    await axios.delete(`http://localhost:4000/api/todo/${id}`);
+    await axios.delete(`https://todobackend-0yxk.onrender.com/api/todo/${id}`);
     Toastify({
       text: "Todo deleted successfully.",
       className: "info",
@@ -106,7 +106,7 @@ async function deleteTodo(id) {
 
 async function updateTodo(id,index) {
   try {
-    const response = await axios.get(`http://localhost:4000/api/todo/${id}`);
+    const response = await axios.get(`https://todobackend-0yxk.onrender.com/api/todo/${id}`);
     const update = document.getElementById("todo");
     update.value = response.data.message;
     document.getElementsByClassName("btn btn-danger")[index].style.display="none";
@@ -126,11 +126,10 @@ async function updateTodo(id,index) {
       const value = {
         message: todo,
       };
-      await axios.put(`http://localhost:4000/api/todo/${id}`, value);
+      await axios.put(`https://todobackend-0yxk.onrender.com/api/todo/${id}`, value);
       document.getElementById("addtodo").style.display = "block";
       updateBtn.style.display = "none";
       document.getElementsByClassName("btn btn-danger")[index].style.display="block";
-      getData();
       document.getElementById("todo").value = "";
       Toastify({
         text: "Todo updated successfully.",
@@ -140,6 +139,7 @@ async function updateTodo(id,index) {
         }
       }).showToast();
     });
+    getData();
   } catch (error) {
     Toastify({
       text: "Todo not updated.",
